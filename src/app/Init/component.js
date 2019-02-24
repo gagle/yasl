@@ -35,6 +35,4 @@ export class InitAppProvider extends React.Component {
   }
 }
 
-InitAppProvider.
-
 export const InitAppConsumer = InitAppContext.Consumer;

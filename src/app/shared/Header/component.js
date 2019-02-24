@@ -19,27 +19,49 @@ const Head = styled.div`
   height: 40px;
 `;
 
-export default function Header() {
-  return (
-    <InitAppConsumer>
-      {initData => (
-        <ThemeConsumer>
-          {({ color }) => (
-            <HeaderWrapper>
-              <Background background={initData.header.background}>
-                <Head>
-                  <Menu color={color} />
-                  <Logo
-                    src={initData.header.logo.src}
-                    size={initData.header.logo.size}
-                  />
-                </Head>
-                <Sections names={initData.header.sections} />
-              </Background>
-            </HeaderWrapper>
-          )}
-        </ThemeConsumer>
-      )}
-    </InitAppConsumer>
-  );
+export default class Header extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.handleScroll = this.handleScroll.bind(this);
+  }
+
+  componentDidMount() {
+    window.addEventListener('scroll', this.handleScroll);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+  }
+
+  handleScroll() {
+    if (window.scrollY >= 400) {
+      console.log(123);
+    }
+  }
+
+  render() {
+    return (
+      <InitAppConsumer>
+        {initData => (
+          <ThemeConsumer>
+            {({ color }) => (
+              <HeaderWrapper>
+                <Background background={initData.header.background}>
+                  <Head>
+                    <Menu color={color} />
+                    <Logo
+                      src={initData.header.logo.src}
+                      size={initData.header.logo.size}
+                    />
+                  </Head>
+                  <Sections names={initData.header.sections} />
+                </Background>
+              </HeaderWrapper>
+            )}
+          </ThemeConsumer>
+        )}
+      </InitAppConsumer>
+    );
+  }
 }
