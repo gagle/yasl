@@ -9,6 +9,12 @@ npm install
 npm run start:dev
 ```
 
+## 2. Test
+
+```bash
+npm test
+```
+
 ## 2. Pagination
 
 No async pagination as been implemented. For a complete demo using infinite scroll pagination take a look to the [yafv](https://github.com/gagle/yafv) project.
